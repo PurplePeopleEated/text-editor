@@ -34,6 +34,7 @@ module.exports = () => {
         background_color: '#ffffff',
         theme_color: '#ffffff',
         start_url: './',
+        publicPath: './',
         icons: [
           {
             src: path.resolve('src/images/logo.png'),
@@ -55,7 +56,8 @@ module.exports = () => {
           use: {
             loader: 'babel-loader',
             options: {
-              presets: ['@babel/preset-env']
+              presets: ['@babel/preset-env'],
+              plugins: ['@babel/plugin-proposal-object-rest-spread', '@babel/transform-runtime'],
             }
           }
         }
