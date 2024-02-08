@@ -27,4 +27,17 @@ warmStrategyCache({
 registerRoute(({ request }) => request.mode === 'navigate', pageCache);
 
 // TODO: Implement asset caching
-registerRoute();
+registerRoute(
+  // Match any request that ends with .png, .jpg, .jpeg, or .svg.
+  ({ request }) => ['style', 'script', 'worker'].includes(request.destination),
+  // Use a cache-first strategy for handling those requests.
+  new CacheFirst({
+    cacheName: 'asset-cache',
+    plugins: [
+      // This plugin will cache responses with these headers to a maximum-age of 60 days
+      new CacheableResponsePlugin({
+        statuses: [0, 200],
+      }),
+    ],
+  })
+);
