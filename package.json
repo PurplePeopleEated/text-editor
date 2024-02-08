@@ -2,7 +2,7 @@
   "name": "jate",
   "version": "1.0.0",
   "engines": {
-    "node": "16.13.1"
+    "node": "18.18.2"
   },
   "description": "a pwa text editor",
   "main": "server.js",
